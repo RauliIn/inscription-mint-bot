@@ -1,17 +1,17 @@
 package config
 
 type Config struct {
-	PriKey string //私钥
+	PriKeys []string //私钥列表
 	//ethrpc请求配置
 	EthRpcConf struct {
-		Url          string // Url:请求rpc地址 修改来替换各链rpc地址
-		IntervalTime int    //请求轮询时间
-		PrefixNumber uint64 //查询当前区块之前多少块
+		Url           string  // Url:请求rpc地址 修改来替换各链rpc地址
+		IntervalTime  int     //请求轮询时间
+		GasPriceRatio float64 //gas比例,比例越高花费gas越多,默认1.01
 	}
 	//minted限制,用来过滤非热门铭文
-	MintedLimit struct {
-		AddrCount  int //minted该铭文的地址数 只有比当前数量大才去minted
-		TotalCount int //minted该铭文的总交易数 只有比当前数量大才去minted
-		MintCount  int //mint该铭文的张数
+	MintConf struct {
+		ToAddr    string //发送地址
+		InputData string //发送数据
+
 	}
 }

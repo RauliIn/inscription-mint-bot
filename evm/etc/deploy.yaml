@@ -1,14 +1,18 @@
 #私钥
-PriKey: 替换成你的私钥
-
+PriKeys: #私钥配置,把私钥粘贴上去替换,多余的删除,少的复制粘贴到下面,需要保持对齐
+  - xxxxx
+  - xxxxx
+  - xxxxx
+  - xxxxx
+  - xxxxx
+  - xxxxx
 #ethrpc请求配置
 EthRpcConf:
-  Url: 替换成想要打的链的rpc  #Url:请求rpc地址 修改来替换各链rpc地址
-  IntervalTime: 1  #IntervalTime 间隔时间 该数值根据当前链出块时间酌情修改
-  PrefixNumber: 1000 #PrefixNumber 前置区块数量 从当前区块之前多少块查,该数值根据当前链出块时间酌情修改
+  Url: xxxxx  #Url:请求rpc地址 修改来替换各链rpc地址
+  IntervalTime: 50  #IntervalTime 间隔时间 毫秒 默认50
+  GasPriceRatio: 1.01 #gas比例,比例越高花费gas越多,默认1.01
 
-#minted限制,用来过滤非热门铭文
-MintedLimit:
-  AddrCount: 200 #minted该铭文的地址数 只有比当前数量大才去minted
-  TotalCount: 3000 #minted该铭文的总交易数 只有比当前数量大才去minted
-  MintCount: 10 #mint该铭文的张数
+#minted限制
+MintConf:
+  InputData: xxxxx #发送数据,替换成你需要发送的data数据
+  ToAddr:    #发送地址,默认不填,不填给自己地址发送,填了给指定地址发送

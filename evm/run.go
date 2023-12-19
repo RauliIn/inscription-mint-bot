@@ -38,10 +38,11 @@ func main() {
 	defer ants.Release()
 
 	for _, priKey := range priKeys {
-		wg.Add(1)
-		priKeyLocal := priKey
-		ants.Submit(func() {
 
+		priKeyLocal := priKey
+		wg.Add(1)
+		ants.Submit(func() {
+			defer wg.Done()
 			fromAddress, err := getAddress(priKeyLocal)
 			if err != nil {
 				return
@@ -49,6 +50,7 @@ func main() {
 			//获取发送数据
 			inputData := strings.TrimSpace(c.MintConf.InputData)
 			if inputData == "" {
+				logx.Errorf("inputData is empty")
 				return
 			}
 			//获取发送地址,默认不填,不填给自己地址发送,填了给指定地址发送
@@ -117,7 +119,6 @@ func main() {
 				nonce++
 			}
 
-			wg.Done()
 		})
 
 	}
